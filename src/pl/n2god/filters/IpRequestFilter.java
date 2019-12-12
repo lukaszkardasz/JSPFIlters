@@ -21,7 +21,11 @@ chain.doFilter(request, response), gdzie obiekt chain jest trzecim parametrem na
 Jeżeli adres IP nie pasuje do naszego wzorca, odsyłamy w odpowiedzi komunikat błędu 403.
 Wcześniej musimy zrzutować obiekt response na typ HttpServletResponse w związku z ograniczoną funkcjonalnością klasy ServletResponse.*/
 
-//@WebFilter(filterName = "IpRequestFilter")
+/*
+@WebFilter(
+    urlPatterns = "/*",
+    initParams = { @WebInitParam(name = "ipPattern", value = "192\\.168\\.1\\.[0-9]{1,3}")
+*/
 public class IpRequestFilter implements Filter {
 	private String ipPattern;
 

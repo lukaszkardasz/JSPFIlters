@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /**
  * @author n2god on 12/12/2019
- * @project filterts
+ * @project filters
  */
 @WebServlet(name = "LoginServlet", urlPatterns = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
