@@ -12,15 +12,42 @@
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>pl.n2god.servlets.LoginServlet</servlet-class>
-
     </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>pl.n2god.servlets.LogoutServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+<!--Konfiguracja servletów-->
+    <filter>
+        <filter-name>IpFilter</filter-name>
+        <filter-class>pl.n2god.filters.IpRequestFilter</filter-class>
+        <init-param>
+            <param-name>ipPattern</param-name>
+            <param-value>192\.168\.1\[0-9]{1,3}</param-value>
+        </init-param>
+    </filter>
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>pl.n2god.filters.AuthenticationFilter</filter-class>
+    </filter>
 
-
-
+    <filter-mapping>
+        <filter-name>IpFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>l
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/admin.jsp</url-pattern>
+    </filter-mapping>
 </web-app>
 
 <!--W deskryptorze wdrożenia widzimy znane nam już wpisy związane z serwletami, czyli <servlet> oraz <servlet-mapping>.
